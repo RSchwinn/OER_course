@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Data Science (Vicki)"
+title: "Welcome to Data Science (Vicky & Nora)"
 author: ""
 output:
   xaringan::moon_reader:
