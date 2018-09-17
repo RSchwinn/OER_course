@@ -73,13 +73,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<p><label for="tufte-mn-1" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-1" class="margin-toggle"><span class="marginnote"><span style="display: block;"><strong>A note on expectations: </strong> For each exercise and on your own question you answer include any relevant output (tables, summary statistics, plots) in your answer. Doing this is easy! Just place any relevant R code in a code chunk, and hit Knit HTML.</span></span></p>
-<p>Some define statistics as the field that focuses on turning information into knowledge. The first step in that process is to summarize and describe the raw information - the data. In this lab we explore data on college majors and earnings, specifically the data begind the FiveThirtyEight story <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">“The Economic Guide To Picking A College Major”</a>.</p>
+<p><label for="tufte-mn-1" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-1" class="margin-toggle"><span class="marginnote"><span style="display: block;"><strong>A note on expectations: </strong> Do each exercise on your own and include any relevant output (tables, summary statistics, plots) in your answer. Doing this is easy! Just place any relevant R code in a code chunk, and hit Knit HTML.</span></span></p>
+<p>Some define statistics as the field that focuses on turning information into knowledge. The first step in that process is to summarize and describe the raw information - the data. In this lab we explore data on college majors and earnings, specifically the data behind the FiveThirtyEight story <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">“The Economic Guide To Picking A College Major”</a>.</p>
 <p>These data originally come from the American Community Survey (ACS) 2010-2012 Public Use Microdata Series. While this is outside the scope of this lab, if you are curious about how raw data from the ACS were cleaned and prepared, see <a href="https://github.com/fivethirtyeight/data/blob/master/college-majors/college-majors-rscript.R">the code</a> FiveThirtyEight authors used.</p>
 <p>We should also note that there are many considerations that go into picking a major. Earnings potential and employment prospects are two of them, and they are important, but they don’t tell the whole story. Keep this in mind as you analyze the data.</p>
 <div id="packages" class="section level1">
 <h1>Packages</h1>
-<p>In this lab we will work with the <code>tidyverse</code> and <code>fivethirtyeight</code> packages. We start by loading the package.</p>
+<p>In this lab we will work with the <code>tidyverse</code> and <code>fivethirtyeight</code> packages. We start by loading each package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(fivethirtyeight)</code></pre></div>
 <p>Note that these packages are also loaded in your R Markdown document.</p>
