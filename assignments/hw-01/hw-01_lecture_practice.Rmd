@@ -1,6 +1,6 @@
 ---
 title: "HW 01 - Ugly charts"
-author: OERTeam
+author: "OER!!!"
 output: 
   html_document: 
     css: ../hw.css
