@@ -41,11 +41,27 @@ produced based off the data given on the Wikipedia page.
 ![fisheries-plot](img/fisheries.png)
 
 
-```{r answer1, fig.align = 'right'}
+```{r answer1, fig.align = 'right', warnings = F, messages = F, error = F, eval = T, echo = F}
 # Answer question here. The following two lines will help you to install hard to find libraries.
 if(!require(devtools)){install.packages("devtools")}
 if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
 if(!require(datasauRus)){install.packages("datasauRus")}
+library(tidyverse)
+
+ # ?fisheries
+options(scipen = 99)
+library(scales)
+
+ggplot(data = fisheries,
+        mapping = aes(x = country, y = capture, fill = capture))+
+    geom_col()+
+    coord_flip()+
+    scale_y_continuous(labels = comma)
+
+
+    
+
+
 ```
 
 
