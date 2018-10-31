@@ -41,12 +41,11 @@ produced based off the data given on the Wikipedia page.
 ![fisheries-plot](img/fisheries.png)
 
 
-```{r}
+```{r answer1, fig.align = 'right'}
 # Answer question here. The following two lines will help you to install hard to find libraries.
 if(!require(devtools)){install.packages("devtools")}
 if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
 if(!require(datasauRus)){install.packages("datasauRus")}
-
 ```
 
 
