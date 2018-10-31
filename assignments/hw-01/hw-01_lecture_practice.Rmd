@@ -1,6 +1,10 @@
 ---
 title: "HW 01 - Ugly charts"
+<<<<<<< HEAD
 Author: "OER!!"
+=======
+author: "OER!!!"
+>>>>>>> f83552a44d9be6773941295deba80e8115fb28b0
 output: 
   html_document: 
     css: ../hw.css
