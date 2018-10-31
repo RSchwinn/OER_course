@@ -40,6 +40,16 @@ produced based off the data given on the Wikipedia page.
 ![fisheries-plot](img/fisheries.png)
 
 
+```{r}
+# Answer question here. The following two lines will help you to install hard to find libraries.
+
+if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
+if(!require(datasauRus)){install.packages("datasauRus")}
+
+```
+
+
+
 2. **Instructional staff employee trends**: The American Association of 
 University Professors (AAUP) is a nonprofit membership association of faculty 
 and other academic professionals. 
