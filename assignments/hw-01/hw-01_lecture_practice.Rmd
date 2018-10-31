@@ -1,5 +1,6 @@
 ---
 title: "HW 01 - Ugly charts"
+Author: "OER!!!"
 output: 
   html_document: 
     css: ../hw.css
@@ -40,7 +41,7 @@ produced based off the data given on the Wikipedia page.
 ![fisheries-plot](img/fisheries.png)
 
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 # Answer question here. The following two lines will help you to install hard to find libraries.
 if(!require(devtools)){install.packages("devtools")}
 if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
