@@ -46,6 +46,21 @@ produced based off the data given on the Wikipedia page.
 if(!require(devtools)){install.packages("devtools")}
 if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
 if(!require(datasauRus)){install.packages("datasauRus")}
+<<<<<<< HEAD
+=======
+library(tidyverse)
+
+ # ?fisheries
+options(scipen = 99)
+library(scales)
+
+ggplot(data = fisheries,
+        mapping = aes(x = country, y = capture, fill = capture))+
+    geom_col()+
+    coord_flip()+
+    scale_y_continuous(labels = comma)
+
+>>>>>>> 701a20022f20c730eb8b514ae0b4a3804dfe3296
 ```
 # ? fisheries
 
