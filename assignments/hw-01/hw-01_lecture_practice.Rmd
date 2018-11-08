@@ -58,10 +58,6 @@ ggplot(data = fisheries,
     coord_flip()+
     scale_y_continuous(labels = comma)
 
-
-    
-
-
 ```
 
 
