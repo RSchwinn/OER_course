@@ -41,7 +41,7 @@ produced based off the data given on the Wikipedia page.
 ![fisheries-plot](img/fisheries.png)
 
 
-```{r answer1, fig.align = 'right', warnings = F, messages = F, error = F, eval = T, echo = F}
+```{r answer1, fig.align = 'right', warnings = F, message = F, error = F, eval = T, echo = F, fig.height = 10, fig.fullwidth = T}
 # Answer question here. The following two lines will help you to install hard to find libraries.
 if(!require(devtools)){install.packages("devtools")}
 if(!require(dsbox)){devtools::install_github("rstudio-education/dsbox")}
@@ -51,16 +51,59 @@ library(tidyverse)
  # ?fisheries
 options(scipen = 99)
 library(scales)
+# 
+# library(reshape2)
+# melted_fisheries = melt(fisheries, id = "country")
+# 
+# ggplot(data = melted_fisheries,
+#         mapping = aes(x = country, 
+#                       y = value, 
+#                       group = variable))+
+#     geom_col(position = "dodge")+
+#     coord_flip()+
+#     scale_y_continuous(labels = comma)
 
-ggplot(data = fisheries,
-        mapping = aes(x = country, y = capture, fill = capture))+
+df = fisheries %>%
+    arrange(capture)
+df$country = factor(df$country, levels = df$country)
+
+p1 = ggplot(data = df[42:75,],
+        mapping = aes(x = country,
+                      y = capture))+
     geom_col()+
     coord_flip()+
-    scale_y_continuous(labels = comma)
+    scale_y_continuous(labels = comma)+
+    labs(title = "Capture",
+       subtitle = "(Countries Capturing 90% of Fish)")+
+     theme_light()
+       
 
 
-    
+df[is.na(df$aquaculture),"aquaculture"] = 0
 
+df = df %>%
+    arrange(aquaculture)
+
+
+df$country = factor(df$country, levels = df$country)
+
+sum(df$aquaculture[1:41]) / sum(df$aquaculture)
+
+
+
+p2 = ggplot(data = df[42:75,],
+        mapping = aes(x = country,
+                      y = aquaculture))+
+    geom_col()+
+    coord_flip()+
+    scale_y_continuous(labels = comma)+
+    labs(title = "Aquaculture",
+       subtitle = "(90% of Aquaculture)")+
+    theme_light()
+
+library(gridExtra)
+
+grid.arrange(p1,p2, nrow =1)
 
 ```
 
