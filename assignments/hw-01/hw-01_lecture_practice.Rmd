@@ -1,5 +1,5 @@
 ---
-title: "HW 01 - Ugly charts"
+title: "HW 01 - Less Ugly Charts"
 author: "OER!!!"
 output: 
   html_document: 
@@ -52,12 +52,12 @@ library(tidyverse)
 options(scipen = 99)
 library(scales)
 # 
-# library(reshape2)
-# melted_fisheries = melt(fisheries, id = "country")
-# 
+library(reshape2)
+melted_fisheries = melt(fisheries, id = "country")
+
 # ggplot(data = melted_fisheries,
-#         mapping = aes(x = country, 
-#                       y = value, 
+#         mapping = aes(x = country,
+#                       y = value,
 #                       group = variable))+
 #     geom_col(position = "dodge")+
 #     coord_flip()+
@@ -70,7 +70,7 @@ df$country = factor(df$country, levels = df$country)
 p1 = ggplot(data = df[42:75,],
         mapping = aes(x = country,
                       y = capture))+
-    geom_col()+
+    geom_col(fill = "grey")+
     coord_flip()+
     scale_y_continuous(labels = comma)+
     labs(title = "Capture",
@@ -94,7 +94,7 @@ sum(df$aquaculture[1:41]) / sum(df$aquaculture)
 p2 = ggplot(data = df[42:75,],
         mapping = aes(x = country,
                       y = aquaculture))+
-    geom_col()+
+    geom_col(fill = "blue")+
     coord_flip()+
     scale_y_continuous(labels = comma)+
     labs(title = "Aquaculture",
@@ -128,13 +128,15 @@ library(dsbox)
 df = instructors
 
 library(reshape2)
-melted_instructors = melt(instructors, "year")
+melted_instructors = melt(data = instructors, 
+                          id.vars = "year")
 
 # casted = dcast(melted_instructors, year ~ variable)
 
 ggplot(data = melted_instructors) + 
     geom_area( aes(x=year, y=value, fill=variable)) + 
     guides(fill = guide_legend(reverse=TRUE))
+
 
 ```
 
