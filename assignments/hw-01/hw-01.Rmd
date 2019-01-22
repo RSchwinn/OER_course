@@ -26,6 +26,7 @@ in the visualization you created.
 On the due date you will give a brief presentation describing one of your 
 improved visualizations and the reasoning for the choices you made.
 
+
 ## Exercises
 
 1. **Fisheries**: Fisheries and Aquaculture Department of the Food and 

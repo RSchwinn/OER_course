@@ -38,7 +38,7 @@ than 100,000 tons are not included in the data. The source data can be found
 in the `fisheries` dataset in the **dsbox** package. The following plots were 
 produced based off the data given on the Wikipedia page.
 
-![fisheries-plot](img/fisheries.png)
+<!-- ![fisheries-plot](img/fisheries.png) -->
 
 
 ```{r answer1, fig.align = 'right', warnings = F, message = F, error = F, eval = T, echo = F, fig.height = 10, fig.fullwidth = T}
@@ -122,6 +122,24 @@ page.
 ![fisheries-plot](img/inst_staff.png)
 
 The source data can be found in the `instructors` dataset in the **dsbox** package.
+
+```{r,  warnings = F, message = F, error = F, eval = T, echo = F, }
+library(dsbox)
+df = instructors
+
+library(reshape2)
+melted_instructors = melt(instructors, "year")
+
+# casted = dcast(melted_instructors, year ~ variable)
+
+ggplot(data = melted_instructors) + 
+    geom_area( aes(x=year, y=value, fill=variable)) + 
+    guides(fill = guide_legend(reverse=TRUE))
+
+```
+
+
+
 
 ## Getting help
 
