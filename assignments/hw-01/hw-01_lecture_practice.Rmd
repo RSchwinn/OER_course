@@ -131,12 +131,32 @@ library(reshape2)
 melted_instructors = melt(data = instructors, 
                           id.vars = "year")
 
-# casted = dcast(melted_instructors, year ~ variable)
-
-ggplot(data = melted_instructors) + 
+p = ggplot(data = melted_instructors) + 
     geom_area( aes(x=year, y=value, fill=variable)) + 
     guides(fill = guide_legend(reverse=TRUE))
 
+staff = read.csv("staff.csv")
+
+# casted = dcast(melted_instructors, year ~ variable)
+
+df_1 = cbind(df, total_staff = staff[,2])
+
+df_1[,2] = df_1[,2] * df_1[,7]/100
+df_1[,3] = df_1[,3] * df_1[,7]/100
+df_1[,4] = df_1[,4] * df_1[,7]/100
+df_1[,5] = df_1[,5] * df_1[,7]/100
+df_1[,6] = df_1[,6] * df_1[,7]/100
+
+df_1 = df_1[,-7]
+melted_instructors = melt(data = df_1, 
+                          id.vars = "year")
+q =   ggplot(data = melted_instructors) + 
+    geom_area( aes(x=year, y=value, fill=variable)) + 
+    guides(fill = guide_legend(reverse=TRUE))
+  
+grid.arrange(p,q)
+ 
+df$`I am makeing things up` = 1:11
 
 ```
 
