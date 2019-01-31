@@ -94,37 +94,10 @@ ggplot(df ) +
 
 ```
 
+
 2. Recreate the following plot.
 
 ![recreate](img/recreate.png)
-
-```{r, fig.height = 3}
-# install.packages("tidyverse")
-library(tidyverse)
-df = read.csv("data/pokemon.csv", stringsAsFactors = F)
-
-df_temp  = df %>% 
-    group_by(species) %>%
-    count(attack_weak) %>%
-    filter(species != "Weedle")
-
-# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
- ggplot(data = df_temp,
-           mapping = aes(x = species,
-                         y = n,
-                         fill = attack_weak
-                         )
-           ) +
-    geom_col(position = "dodge") +
-    coord_flip() +
-    labs(y = "Frequency",
-         x = "Species",
-         title = "Pre-evolution weaker attack of the Pokémon",
-         subtitle = "by species")+
-     guides(fill=guide_legend(title="Attack weak")) +
-     theme_minimal()
-```
-
 
 3. Pick two categorical variables and make a bar plot that depicts the 
 relationship between them. These can be variables from the original data or 
