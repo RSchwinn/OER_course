@@ -67,7 +67,7 @@ attack.
 
 ## Exercises
 
-1. First do this: Calculate the diference in heights pre and post evolution and save this as a new variable. Calculate the percentage of Pokémon that grew during evolution. Also visualize the distribution of change in height by species and provide a discussion of how change in height varies across species.
+1. Calculate the diference in heights pre and post evolution and save this as a new variable. Calculate the percentage of Pokémon that grew during evolution. Also visualize the distribution of change in height by species and provide a discussion of how change in height varies across species.
 
 ```{r}
 # install.packages("tidyverse")
