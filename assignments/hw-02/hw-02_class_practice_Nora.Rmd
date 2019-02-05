@@ -103,6 +103,32 @@ ggplot(df ) +
 relationship between them. These can be variables from the original data or 
 ones that you create based on the given data.
 
+```{r, fig.height = 3}
+install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+    group_by(species) %>%
+    count(attack_strong_new) %>%
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey", "Weedle") )
+ ggplot(data = df_temp,
+           mapping = aes(x = species,
+                         y = n,
+                         fill = attack_strong_new
+                         )
+           ) +
+    geom_col(position = "dodge") +
+    coord_flip() +
+    labs(y = "Frequency",
+         x = "Species",
+         title = "Post-evolution stronger attack of the Pokémon",
+         subtitle = "by species")+
+     guides(fill=guide_legend(title="Stronger Attack Type")) +
+     theme_minimal()
+```
+
 4. Pick a numerical and a categorical variable, and construct side-by-side box 
 plots depicting the relationship between them.
 
