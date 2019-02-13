@@ -157,7 +157,7 @@ df_temp  = df %>%
 ```
 
 4. Pick a numerical and a categorical variable, and construct side-by-side box 
-plots depicting the relationship between them.
+plots depicting the relationship between them..
 
 ```{r}
 p <- ggplot(data=df,
@@ -183,8 +183,15 @@ install.packages("gridExtra")
 
 5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, 
 and convert your side-by-side box plots from the previous task to violin plots. 
-What do the violin plots reveal that box plots do not? What features are 
-apparent in the box plots but not in the violin plots?
+What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+
+```{r}
+
+
+
+
+```
+
 
 6. What characteristics correspond to an evolved Pokémon with a high combat 
 power? You do not need to come up with an exhaustive list, but you should walk 
