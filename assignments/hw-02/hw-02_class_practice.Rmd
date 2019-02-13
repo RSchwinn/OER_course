@@ -175,22 +175,26 @@ What do the violin plots reveal that box plots do not? What features are apparen
 p <- ggplot(data = df,
             mapping = aes(x = species,
                           y = weight))
+q = p + geom_violin()
 p = p + geom_boxplot()
-
-q <- ggplot(data = df,
-            mapping = aes(x = species,
-                          y = weight))
-q = q + geom_violin()
 
 library(gridExtra)
 grid.arrange(q,p, nrow = 1)
 ```
 
 
-6. What characteristics correspond to an evolved Pokémon with a high combat 
-power? You do not need to come up with an exhaustive list, but you should walk 
-us through your reasoning for answering this question and include all relevant 
-summary statistics and visualizations.
+6. What characteristics correspond to an evolved Pokémon with a high combat power? You do not need to come up with an exhaustive list, but you should walk us through your reasoning for answering this question and include all relevant summary statistics and visualizations.
+
+```{r}
+library("dplyr")
+df_num = select_if(df, is.numeric)
+
+lm1 = lm(formula = "cp_new ~ .", 
+         data = df_num)
+summary(lm1)
+
+```
+
 
 ## Getting help
 
