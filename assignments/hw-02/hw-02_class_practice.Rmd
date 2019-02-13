@@ -126,9 +126,7 @@ df_temp  = df %>%
 ```
 
 
-3. Pick two categorical variables and make a bar plot that depicts the 
-relationship between them. These can be variables from the original data or 
-ones that you create based on the given data.
+3. Pick two categorical variables and make a bar plot that depicts the relationship between them. These can be variables from the original data or ones that you create based on the given data.
 
 ```{r, fig.height = 3}
 # install.packages("tidyverse")
@@ -156,13 +154,38 @@ df_temp  = df %>%
      theme_minimal()
 ```
 
-4. Pick a numerical and a categorical variable, and construct side-by-side box 
-plots depicting the relationship between them.
+4. Pick a numerical and a categorical variable, and construct side-by-side box plots depicting the relationship between them.
 
-5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, 
-and convert your side-by-side box plots from the previous task to violin plots. 
-What do the violin plots reveal that box plots do not? What features are 
-apparent in the box plots but not in the violin plots?
+```{r}
+p <- ggplot(data = df,
+            mapping = aes(x = species,
+                          y = weight))
+p + geom_boxplot()
+```
+
+
+5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, and convert your side-by-side box plots from the previous task to violin plots. 
+What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+
+- The violin plot provides more fine grain information beyond the quartiles.
+
+- On the other hand, the boxplot specifically identifies the 2^nd^, 3^rd^, and 4^th^ quantiles and, also, identifies outliers.
+
+```{r}
+p <- ggplot(data = df,
+            mapping = aes(x = species,
+                          y = weight))
+p = p + geom_boxplot()
+
+q <- ggplot(data = df,
+            mapping = aes(x = species,
+                          y = weight))
+q = q + geom_violin()
+
+library(gridExtra)
+grid.arrange(q,p, nrow = 1)
+```
+
 
 6. What characteristics correspond to an evolved Pokémon with a high combat 
 power? You do not need to come up with an exhaustive list, but you should walk 
