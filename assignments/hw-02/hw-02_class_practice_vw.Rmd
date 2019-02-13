@@ -94,17 +94,92 @@ ggplot(df ) +
 
 ```
 
-
 2. Recreate the following plot.
 
 ![recreate](img/recreate.png)
+
+```{r, fig.height = 3}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+    group_by(species) %>%
+    count(attack_weak) %>%
+    filter(species != "Weedle")
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
+ ggplot(data = df_temp,
+           mapping = aes(x = species,
+                         y = n,
+                         fill = attack_weak
+                         )
+           ) +
+    geom_col(position = "dodge") +
+    coord_flip() +
+    labs(y = "Frequency",
+         x = "Species",
+         title = "Pre-evolution weaker attack of the Pokémon",
+         subtitle = "by species")+
+     guides(fill=guide_legend(title="Attack weak")) +
+     theme_minimal()
+```
+
 
 3. Pick two categorical variables and make a bar plot that depicts the 
 relationship between them. These can be variables from the original data or 
 ones that you create based on the given data.
 
+```{r, fig.height = 3}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+    group_by(species) %>%
+    count(attack_strong_new)
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
+ ggplot(data = df_temp,
+           mapping = aes(x = species,
+                         y = n,
+                         fill = attack_strong_new
+                         )
+           ) +
+    geom_col(position = "dodge") +
+    coord_flip() +
+    labs(y = "Frequency",
+         x = "Species",
+         title = "Pre-evolution weaker attack of the Pokémon",
+         subtitle = "by species")+
+     guides(fill=guide_legend(title="Attack strong new")) +
+     theme_minimal()
+```
+
 4. Pick a numerical and a categorical variable, and construct side-by-side box 
 plots depicting the relationship between them.
+
+```{r}
+p <- ggplot(data=df,
+            mapping = aes(x = species,
+                          y = weight))
+p = p + geom_boxplot()
+
+q <- ggplot(data=df,
+            mapping = aes(x=species,
+                          y =weight))
+q = q + geom_violin()
+
+library(gridExtra)
+grid.arrange(q,p, nrow=1)
+
+install.packages("gridExtra")
+
+
+
+
+
+```
 
 5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, 
 and convert your side-by-side box plots from the previous task to violin plots. 
