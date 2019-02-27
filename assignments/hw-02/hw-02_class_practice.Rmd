@@ -137,14 +137,22 @@ df = read.csv("data/pokemon.csv", stringsAsFactors = F)
 
 df_temp  = df %>% 
     group_by(species) %>%
+<<<<<<< HEAD
     count(attack_weak) %>%
 #    filter(species != "Weedle")
+=======
+    count(attack_strong_new)
+>>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
 
 # df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
  ggplot(data = df_temp,
            mapping = aes(x = species,
                          y = n,
+<<<<<<< HEAD
                          fill = attack_weak
+=======
+                         fill = attack_strong_new
+>>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
                          )
            ) +
     geom_col(position = "dodge") +
@@ -153,7 +161,11 @@ df_temp  = df %>%
          x = "Species",
          title = "Pre-evolution weaker attack of the Pokémon",
          subtitle = "by species")+
+<<<<<<< HEAD
      guides(fill=guide_legend(title="Attack weak")) +
+=======
+     guides(fill=guide_legend(title="Attack strong new")) +
+>>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
      theme_minimal()
 ```
 
