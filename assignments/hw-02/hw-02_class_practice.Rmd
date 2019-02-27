@@ -28,6 +28,8 @@ with for this assignment covers 75 Pokémon evolutions spread across four
 species. A wide set of variables are provided, allowing a deeper dive into what 
 characteristics are important in predicting a Pokémon's final combat power (CP).
 
+# RICH DID THIS
+
 ## Data
 
 The dataset for this assignment can be found as a csv file at [here](https://www.openintro.org/stat/data/?data=Pokémon). The variable 
