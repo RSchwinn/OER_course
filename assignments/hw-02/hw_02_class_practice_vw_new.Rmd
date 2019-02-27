@@ -1,0 +1,220 @@
+---
+    title: "HW 02 - Gotta catch 'em all"
+output: 
+    html_document: 
+    css: ../hw.css
+theme: yeti
+toc: true
+toc_float: true
+fig_caption: false
+---
+    
+    <div style= "float:right;position: relative; margin-left: 20px">
+    ```{r setup, echo=FALSE, fig.align="right"}
+knitr::include_graphics("img/pikachu.png")
+knitr::opts_chunk$set(
+    warnings = F,
+    message = F,
+    error = F,
+    eval = T,
+    echo = F)
+```
+</div>
+    
+    A key part of [Pokémon Go](http://www.Pokémongo.com/) is using evolutions to 
+get stronger Pokémon, and a deeper understanding of evolutions is key to being 
+the greatest Pokémon Go player of all time. The data set you will be working 
+with for this assignment covers 75 Pokémon evolutions spread across four 
+species. A wide set of variables are provided, allowing a deeper dive into what 
+characteristics are important in predicting a Pokémon's final combat power (CP).
+
+## Data
+
+The dataset for this assignment can be found as a csv file at [here](https://www.openintro.org/stat/data/?data=Pokémon). The variable 
+descriptions are as follows:
+
+- `name`: A unique name given to the Pokémon
+- `species`: The Pokémon's type, e.g. Pidgey.
+- `cp`: Pre-evolution Combat Power, which is a summary of the Pokémon's strength 
+for battling prior to the evolution of the Pokémon.
+- `hp`: Pre-evolution Hit Points, which is a summary of how difficult it is to 
+weaken the Pokémon in a battle.
+- `weight`: Pre-evolution weight, in kilograms.
+- `height`: Pre-evolution height, in meters.
+- `power_up_stardust`: Pre-evolution stardust required to power up the Pokémon.
+- `power_up_candy`: Pre-evolution candy required to power up the Pokémon.
+- `attack_weak`: The name of the pre-evolution weaker attack of the Pokémon.
+- `attack_weak_type`: The type of the pre-evolution weaker attack.
+- `attack_weak_value`: The damage done by the pre-evolution weaker attack.
+- `attack_strong`: The name of the pre-evolution stronger attack.
+- `attack_strong_type`: The type of the pre-evolution stronger attack.
+- `attack_strong_value`: The damage done by the pre-evolution stronger attack.
+- `cp_new`: Post-evolution Combat Power.
+- `hp_new`: Post-evolution Hit Points.
+- `weight_new`: Post-evolution weight, in kilograms.
+- `height_new`: Post-evolution height, in meters.
+- `power_up_stardust_new`: Post-evolution stardust required to power up the 
+Pokémon.
+- `power_up_candy_new`: Post-evolution candy required to power up the Pokémon.
+- `attack_weak_new`: The name of the post-evolution weaker attack.
+- `attack_weak_type_new`: The type of the post-evolution weaker attack.
+- `attack_weak_value_new`: The damage done by the post-evolution weaker attack.
+- `attack_strong_new`: The name of the post-evolution stronger attack.
+- `attack_strong_type_new`: The type of the post-evolution stronger attack.
+- `attack_strong_value_new`: The damage done by the post-evolution stronger 
+attack.
+- `notes`: Any additional notes made while collecting the data.
+
+## Exercises
+
+1. Calculate the diference in heights pre and post evolution and save this as a new variable. Calculate the percentage of Pokémon that grew during evolution. Also visualize the distribution of change in height by species and provide a discussion of how change in height varies across species.
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+# Old school
+df$height_change = df$height_new - df$height 
+
+# New way
+
+df = df %>%
+mutate(height_change = height_new - height,
+height_percent_change = height_change / height * 100
+)
+
+ggplot(df ) +
+geom_density(aes(height_change)) +
+facet_wrap(~species)
+
+ggplot(df ) +
+geom_density(aes(height_percent_change)) +
+facet_wrap(~species)
+
+```
+
+2. Recreate the following plot.
+
+![recreate](img/recreate.png)
+
+```{r, fig.height = 3}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+group_by(species) %>%
+count(attack_weak) %>%
+filter(species != "Weedle")
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
+ggplot(data = df_temp,
+mapping = aes(x = species,
+y = n,
+fill = attack_weak
+)
+) +
+geom_col(position = "dodge") +
+coord_flip() +
+labs(y = "Frequency",
+x = "Species",
+title = "Pre-evolution weaker attack of the Pokémon",
+subtitle = "by species")+
+guides(fill=guide_legend(title="Attack weak")) +
+theme_minimal()
+```
+
+
+3. Pick two categorical variables and make a bar plot that depicts the relationship between them. These can be variables from the original data or ones that you create based on the given data.
+
+```{r, fig.height = 3}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+group_by(species) %>%
+count(attack_strong_new)
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
+ggplot(data = df_temp,
+mapping = aes(x = species,
+y = n,
+fill = attack_strong_new
+)
+) +
+geom_col(position = "dodge") +
+coord_flip() +
+labs(y = "Frequency",
+x = "Species",
+title = "Pre-evolution weaker attack of the Pokémon",
+subtitle = "by species")+
+guides(fill=guide_legend(title="Attack strong new")) +
+theme_minimal()
+```
+
+4. Pick a numerical and a categorical variable, and construct side-by-side box plots depicting the relationship between them.
+
+```{r}
+p <- ggplot(data = df,
+mapping = aes(x = species,
+y = weight))
+p + geom_boxplot()
+```
+
+
+5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, and convert your side-by-side box plots from the previous task to violin plots. 
+What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+
+- The violin plot provides more fine grain information beyond the quartiles.
+
+- On the other hand, the boxplot specifically identifies the 2^nd^, 3^rd^, and 4^th^ quantiles and, also, identifies outliers.
+
+```{r}
+p <- ggplot(data = df,
+mapping = aes(x = species,
+y = weight))
+q = p + geom_violin()
+p = p + geom_boxplot()
+
+library(gridExtra)
+grid.arrange(q,p, nrow = 1)
+```
+
+
+6. What characteristics correspond to an evolved Pokémon with a high combat power? You do not need to come up with an exhaustive list, but you should walk us through your reasoning for answering this question and include all relevant summary statistics and visualizations.
+
+```{r}
+library("dplyr")
+df_num = select_if(df, is.numeric)
+
+lm1 = lm(formula = "cp_new ~ .", 
+data = df_num)
+summary(lm1)
+
+```
+
+
+## Getting help
+
+Use the #questions channel on Slack to ask questions.
+
+- R errors/questions: Make a [reprex](https://www.tidyverse.org/help/#reprex).
+- Git/GitHub errors/questions: Clearly outline your steps that got you to the 
+point you're in.
+
+You are also welcomed to discuss the homework with each other broadly 
+(no sharing code!) as well as ask questions at office hours.
+
+## Grading
+
+In addition to accuracy of your answers to questions, your submission will be 
+evaluated for
+
+- coding style,
+- informatively named code chunks,
+- commit after each question (at a minimum, more commits ok),
+- informative commit messages,
+- document organization, and
+- quality of writing and grammar.
