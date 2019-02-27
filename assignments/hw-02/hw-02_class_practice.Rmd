@@ -186,12 +186,53 @@ grid.arrange(q,p, nrow = 1)
 6. What characteristics correspond to an evolved Pokémon with a high combat power? You do not need to come up with an exhaustive list, but you should walk us through your reasoning for answering this question and include all relevant summary statistics and visualizations.
 
 ```{r}
+qload = function(..., char, repo = "http://cran.us.r-project.org"){
+    if (!missing(char)) {
+        new_packages <- char
+    } else {
+        new_packages <- as.character(match.call(expand.dots = FALSE)[[2]])
+    }
+    oneload = function (x){
+        if(!(x %in% installed.packages(.Library))){
+            install.packages(x,
+                             repos = repo,
+                             character.only = T)
+        }
+    }
+    invisible(sapply(new_packages,
+                     oneload))
+    invisible(sapply(new_packages,
+                     require,
+                     character.only = T))
+}
+
 library("dplyr")
-df_num = select_if(df, is.numeric)
+df_num = select_if(df, is.numeric) %>%
+    select(-cp, 
+           -power_up_candy_new,
+           -power_up_stardust_new) %>%
+     select(-cp_new, everything())
 
 lm1 = lm(formula = "cp_new ~ .", 
          data = df_num)
 summary(lm1)
+
+pokemon_matrix = df_num %>%
+    select(-weight_new,
+           -height_new,
+           -power_up_candy,
+           -attack_strong_value,
+           -attack_weak_value_new
+           )
+
+qload(psych)
+pairs.panels(pokemon_matrix, 
+             method = "pearson", # correlation method
+             hist.col = "grey",
+             # density = TRUE,  # show density plots
+             lm = T,
+             ellipses = TRUE # show correlation ellipses
+             )
 
 ```
 
