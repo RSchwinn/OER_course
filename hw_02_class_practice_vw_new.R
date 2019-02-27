@@ -1,16 +1,16 @@
 ---
-title: "HW 02 - Gotta catch 'em all"
+    title: "HW 02 - Gotta catch 'em all"
 output: 
-  html_document: 
+    html_document: 
     css: ../hw.css
-    theme: yeti
-    toc: true
-    toc_float: true
-    fig_caption: false
+theme: yeti
+toc: true
+toc_float: true
+fig_caption: false
 ---
-
-<div style= "float:right;position: relative; margin-left: 20px">
-```{r setup, echo=FALSE, fig.align="right"}
+    
+    <div style= "float:right;position: relative; margin-left: 20px">
+    ```{r setup, echo=FALSE, fig.align="right"}
 knitr::include_graphics("img/pikachu.png")
 knitr::opts_chunk$set(
     warnings = F,
@@ -20,8 +20,8 @@ knitr::opts_chunk$set(
     echo = F)
 ```
 </div>
-
-A key part of [Pokémon Go](http://www.Pokémongo.com/) is using evolutions to 
+    
+    A key part of [Pokémon Go](http://www.Pokémongo.com/) is using evolutions to 
 get stronger Pokémon, and a deeper understanding of evolutions is key to being 
 the greatest Pokémon Go player of all time. The data set you will be working 
 with for this assignment covers 75 Pokémon evolutions spread across four 
@@ -80,17 +80,17 @@ df$height_change = df$height_new - df$height
 # New way
 
 df = df %>%
-    mutate(height_change = height_new - height,
-           height_percent_change = height_change / height * 100
-           )
+mutate(height_change = height_new - height,
+height_percent_change = height_change / height * 100
+)
 
 ggplot(df ) +
-    geom_density(aes(height_change)) +
-    facet_wrap(~species)
+geom_density(aes(height_change)) +
+facet_wrap(~species)
 
 ggplot(df ) +
-    geom_density(aes(height_percent_change)) +
-    facet_wrap(~species)
+geom_density(aes(height_percent_change)) +
+facet_wrap(~species)
 
 ```
 
@@ -104,25 +104,25 @@ library(tidyverse)
 df = read.csv("data/pokemon.csv", stringsAsFactors = F)
 
 df_temp  = df %>% 
-    group_by(species) %>%
-    count(attack_weak) %>%
-    filter(species != "Weedle")
+group_by(species) %>%
+count(attack_weak) %>%
+filter(species != "Weedle")
 
 # df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
- ggplot(data = df_temp,
-           mapping = aes(x = species,
-                         y = n,
-                         fill = attack_weak
-                         )
-           ) +
-    geom_col(position = "dodge") +
-    coord_flip() +
-    labs(y = "Frequency",
-         x = "Species",
-         title = "Pre-evolution weaker attack of the Pokémon",
-         subtitle = "by species")+
-     guides(fill=guide_legend(title="Attack weak")) +
-     theme_minimal()
+ggplot(data = df_temp,
+mapping = aes(x = species,
+y = n,
+fill = attack_weak
+)
+) +
+geom_col(position = "dodge") +
+coord_flip() +
+labs(y = "Frequency",
+x = "Species",
+title = "Pre-evolution weaker attack of the Pokémon",
+subtitle = "by species")+
+guides(fill=guide_legend(title="Attack weak")) +
+theme_minimal()
 ```
 
 
@@ -134,45 +134,32 @@ library(tidyverse)
 df = read.csv("data/pokemon.csv", stringsAsFactors = F)
 
 df_temp  = df %>% 
-    group_by(species) %>%
-<<<<<<< HEAD
-    count(attack_weak) %>%
-#    filter(species != "Weedle")
-=======
-    count(attack_strong_new)
->>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
+group_by(species) %>%
+count(attack_strong_new)
 
 # df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
- ggplot(data = df_temp,
-           mapping = aes(x = species,
-                         y = n,
-<<<<<<< HEAD
-                         fill = attack_weak
-=======
-                         fill = attack_strong_new
->>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
-                         )
-           ) +
-    geom_col(position = "dodge") +
-    coord_flip() +
-    labs(y = "Frequency",
-         x = "Species",
-         title = "Pre-evolution weaker attack of the Pokémon",
-         subtitle = "by species")+
-<<<<<<< HEAD
-     guides(fill=guide_legend(title="Attack weak")) +
-=======
-     guides(fill=guide_legend(title="Attack strong new")) +
->>>>>>> c6201eb79dd4c8055405bec569ed1b085916e596
-     theme_minimal()
+ggplot(data = df_temp,
+mapping = aes(x = species,
+y = n,
+fill = attack_strong_new
+)
+) +
+geom_col(position = "dodge") +
+coord_flip() +
+labs(y = "Frequency",
+x = "Species",
+title = "Pre-evolution weaker attack of the Pokémon",
+subtitle = "by species")+
+guides(fill=guide_legend(title="Attack strong new")) +
+theme_minimal()
 ```
 
 4. Pick a numerical and a categorical variable, and construct side-by-side box plots depicting the relationship between them.
 
 ```{r}
 p <- ggplot(data = df,
-            mapping = aes(x = species,
-                          y = weight))
+mapping = aes(x = species,
+y = weight))
 p + geom_boxplot()
 ```
 
@@ -186,8 +173,8 @@ What do the violin plots reveal that box plots do not? What features are apparen
 
 ```{r}
 p <- ggplot(data = df,
-            mapping = aes(x = species,
-                          y = weight))
+mapping = aes(x = species,
+y = weight))
 q = p + geom_violin()
 p = p + geom_boxplot()
 
@@ -199,53 +186,12 @@ grid.arrange(q,p, nrow = 1)
 6. What characteristics correspond to an evolved Pokémon with a high combat power? You do not need to come up with an exhaustive list, but you should walk us through your reasoning for answering this question and include all relevant summary statistics and visualizations.
 
 ```{r}
-qload = function(..., char, repo = "http://cran.us.r-project.org"){
-    if (!missing(char)) {
-        new_packages <- char
-    } else {
-        new_packages <- as.character(match.call(expand.dots = FALSE)[[2]])
-    }
-    oneload = function (x){
-        if(!(x %in% installed.packages(.Library))){
-            install.packages(x,
-                             repos = repo,
-                             character.only = T)
-        }
-    }
-    invisible(sapply(new_packages,
-                     oneload))
-    invisible(sapply(new_packages,
-                     require,
-                     character.only = T))
-}
-
 library("dplyr")
-df_num = select_if(df, is.numeric) %>%
-    select(-cp, 
-           -power_up_candy_new,
-           -power_up_stardust_new) %>%
-     select(-cp_new, everything())
+df_num = select_if(df, is.numeric)
 
 lm1 = lm(formula = "cp_new ~ .", 
-         data = df_num)
+data = df_num)
 summary(lm1)
-
-pokemon_matrix = df_num %>%
-    select(-weight_new,
-           -height_new,
-           -power_up_candy,
-           -attack_strong_value,
-           -attack_weak_value_new
-           )
-
-qload(psych)
-pairs.panels(pokemon_matrix, 
-             method = "pearson", # correlation method
-             hist.col = "grey",
-             # density = TRUE,  # show density plots
-             lm = T,
-             ellipses = TRUE # show correlation ellipses
-             )
 
 ```
 

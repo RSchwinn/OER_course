@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Merge conflicts   🤜 🤛</title>
+    <title>Coding style   👗</title>
     <meta charset="utf-8">
     <link href="libs/font-awesome/css/fa-svg-with-js.css" rel="stylesheet" />
     <script src="libs/font-awesome/js/fontawesome-all.min.js"></script>
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Merge conflicts <br> 🤜 🤛
+# Coding style <br> 👗
 
 ---
 
@@ -31,44 +31,136 @@ layout: true
 
 ---
 
-## Merge conflicts
 
-- When two collaborators make changes to a file and push the file to their repo, git merges these two files.
-- If these two files have conflicting content on the same line, git will produce a **merge conflict**.
 
----
+class: center, middle
 
-## Getting started
-
-- Clone the repo for your next assignment in RStudio, and open the .Rmd file.
-- Assign the numbers 1, 2, 3, and 4 to each of the team members.
+# Coding style
 
 ---
 
-## Let's cause a merge conflict
+## Style guide
 
-Take turns in completing the exercise, only one member at a time. For now, only commit and push the Rmd file:
+&gt;"Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."
+&gt;
+&gt;Hadley Wickham
 
-.midi[
-- Member 1 - Change the team name to your actual team name, knit, commit, push.
-- Member 2 - Change the team name to some other word, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
-- Member 3 - Add a name to the first code chunk, knit, commit, push. You should get an error. Pull. No merge conflicts should occur. Now push.
-- Member 4 - Add a different name to the first code chunk, knit, commit, push. You should get an error. Pull. Take a look at the document with the merge conflict. Clear the merge conflict by choosing the correct/preferred change. Commit, and push.
-- All members - Pull, and observe the changes in your document.
-]
+- Style guide for this course is based on the Tidyverse style guide: http://style.tidyverse.org/
+- There's more to it than what we'll cover today, but we'll mention more as we introduce more functionality, and do a recap later in the semester
 
 ---
 
-## Tips for collaborating via GitHub
+## File names and code chunk labels
 
-- Always pull first before you start working.
-- Commit, and push, often to minimize merge conflicts and/or to make merge conflicts easier to resolve.
-- If you find yourself in a situation that is difficult to resolve, ask questions asap, don't let it linger and get bigger.
+- Do not use spaces in file names, use `-` or `_` to separate words
+- Use all lowercase letters
+
+
+```r
+# Good
+ucb-admit.csv
+
+# Bad
+UCB Admit.csv
+```
+
+---
+
+## Object names
+
+- Use `_` to separate words in object names
+- Use informative but short object names
+- Do not reuse object names within an analysis
+
+
+```r
+# Good
+acs_employed
+
+# Bad
+acs.employed
+acs2
+acs_subset
+acs_subsetted_for_males
+```
+
+---
+
+## Spacing
+
+- Put a space before and after all infix operators (=, +, -, &lt;-, etc.), and when naming arguments in function calls. 
+- Always put a space after a comma, and never before (just like in regular English).
+
+
+```r
+# Good
+average &lt;- mean(feet / 12 + inches, na.rm = TRUE)
+
+# Bad
+average&lt;-mean(feet/12+inches,na.rm=TRUE)
+```
+
+---
+
+## ggplot
+
+- Always end a line with `+`
+- Always indent the next line
+
+
+```r
+# Good
+ggplot(diamonds, mapping = aes(x = price)) +
+  geom_histogram()
+
+# Bad
+ggplot(diamonds,mapping=aes(x=price))+geom_histogram()
+```
+
+---
+
+## Long lines
+
+- Limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.
+- Take advantage of RStudio editor's auto formatting for indentation at line breaks.
+
+---
+
+## Assignment
+
+- Use `&lt;-` not `=`
+
+
+```r
+# Good
+x &lt;- 2
+
+# Bad
+x = 2
+```
+
+---
+
+## Quotes
+
+Use `"`, not `'`, for quoting text. The only exception is when the text already contains double quotes and no single quotes.
+
+
+```r
+ggplot(diamonds, mapping = aes(x = price)) +
+  geom_histogram() +
+  # Good
+  labs(title = "`Shine bright like a diamond`",
+  # Good
+       x = "Diamond prices",
+  # Bad
+       y = 'Frequency')
+```
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
 "highlightLines": true,
+"highlightStyle": "solarized-dark",
 "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
