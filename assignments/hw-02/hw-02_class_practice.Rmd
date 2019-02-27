@@ -253,7 +253,7 @@ pairs.panels(pokemon_matrix,
 
 
 
-#Nora did this
+# Nora did this
 
 ## Getting help
 
