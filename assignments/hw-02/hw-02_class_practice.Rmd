@@ -1,5 +1,6 @@
 ---
 title: "HW 02 - Gotta catch 'em all"
+author: "Nora"
 output: 
   html_document: 
     css: ../hw.css
