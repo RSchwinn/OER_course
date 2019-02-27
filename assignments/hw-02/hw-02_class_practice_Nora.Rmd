@@ -94,27 +94,114 @@ ggplot(df ) +
 
 ```
 
-
 2. Recreate the following plot.
 
 ![recreate](img/recreate.png)
+
+```{r, fig.height = 3}
+# install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+    group_by(species) %>%
+    count(attack_weak) %>%
+    filter(species != "Weedle")
+
+# df_temp$species = factor(df_temp$species, levels = c("Eevee", "Caterpie", "Pidgey") )
+ ggplot(data = df_temp,
+           mapping = aes(x = species,
+                         y = n,
+                         fill = attack_weak
+                         )
+           ) +
+    geom_col(position = "dodge") +
+    coord_flip() +
+    labs(y = "Frequency",
+         x = "Species",
+         title = "Pre-evolution weaker attack of the Pokémon",
+         subtitle = "by species")+
+     guides(fill=guide_legend(title="Attack weak")) +
+     theme_minimal()
+```
 
 3. Pick two categorical variables and make a bar plot that depicts the 
 relationship between them. These can be variables from the original data or 
 ones that you create based on the given data.
 
+```{r, fig.height = 3}
+install.packages("tidyverse")
+library(tidyverse)
+df = read.csv("data/pokemon.csv", stringsAsFactors = F)
+
+df_temp  = df %>% 
+    group_by(species) %>%
+    count(attack_strong_new)
+
+ ggplot(data = df_temp,
+           mapping = aes(x = species,
+                         y = n,
+                         fill = attack_strong_new
+                         )
+           ) +
+    geom_col(position = "dodge") +
+    coord_flip() +
+    labs(y = "Frequency",
+        x = "Species",
+        title = "Post-evolution stronger attack of the Pokémon",
+        
+     guides(fill=guide_legend(title="Stronger Attack Type")) +
+     theme_minimal()
+```
+
 4. Pick a numerical and a categorical variable, and construct side-by-side box 
 plots depicting the relationship between them.
+
+```{r}
+library(tidyverse)
+p <- ggplot (data = df,
+            mapping = aes (x = species,
+                           y = height))
+p + geom_boxplot()
+
+```
 
 5. Learn something new: violin plots! Read about them at http://ggplot2.tidyverse.org/reference/geom_violin.html, 
 and convert your side-by-side box plots from the previous task to violin plots. 
 What do the violin plots reveal that box plots do not? What features are 
 apparent in the box plots but not in the violin plots?
 
+```{r}
+library(tidyverse)
+p <- ggplot (data = df,
+            mapping = aes (x = species,
+                           y = height))
+p + geom_boxplot()
+
+
+q <- ggplot (data = df,
+            mapping = aes (x = species,
+                           y = height))
+
+install.packages("gridExtra")
+library(gridExtra)
+q + geom_violin()
+grid.arrange(q,p, nrow = 1)
+
+```
+
+```
+
 6. What characteristics correspond to an evolved Pokémon with a high combat 
 power? You do not need to come up with an exhaustive list, but you should walk 
 us through your reasoning for answering this question and include all relevant 
 summary statistics and visualizations.
+
+
+```{r}
+
+
+```
 
 ## Getting help
 
