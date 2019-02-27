@@ -1,10 +1,6 @@
 ---
 title: "HW 02 - Gotta catch 'em all"
-<<<<<<< HEAD
 author: "Nora"
-=======
-author: "Rich"
->>>>>>> ae74a1a0448700b168a11cfe7992c87fa59fca3f
 output: 
   html_document: 
     css: ../hw.css
