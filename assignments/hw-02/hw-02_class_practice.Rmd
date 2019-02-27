@@ -1,6 +1,6 @@
 ---
 title: "HW 02 - Gotta catch 'em all"
-author" Vicky"
+author: "Vicky and Rich"
 output: 
   html_document: 
     css: ../hw.css
