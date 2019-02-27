@@ -252,6 +252,9 @@ pairs.panels(pokemon_matrix,
 ```
 
 
+
+#Nora did this
+
 ## Getting help
 
 Use the #questions channel on Slack to ask questions.
