@@ -9,6 +9,7 @@ output:
       highlightLines: true
       highlightStyle: solarized-dark
       countIncrementalSlides: false
+fontsize: 10pt
 ---
 
 ```{r child = "../setup.Rmd"}
