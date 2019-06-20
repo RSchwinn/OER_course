@@ -123,7 +123,10 @@ library(plotly)
 library(widgetframe)
 ```
 
-```{r echo=FALSE}
+---
+
+## Messages?
+```{r echo=FALSE, warning=F, message=F}
 p <- plot_ly(pp, x = ~Width_in, y = ~Height_in, z = ~log(price),
         marker = list(size = 3,
                        color = "lightgray",
