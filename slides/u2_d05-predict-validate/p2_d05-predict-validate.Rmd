@@ -14,6 +14,7 @@ output:
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(broom)
+library(DT)
 ```
 
 ```{r setup, include=FALSE}
@@ -78,10 +79,9 @@ What percent of the variability in evaluation scores is explained by the model?
 ]
 
 ```{r}
-full_model <- lm(score ~ rank + ethnicity + gender + language + 
-                         age + cls_perc_eval + cls_did_eval + 
-                         cls_students + cls_level + cls_profs + 
-                         cls_credits + bty_avg, data = evals)
+full_model <- lm(
+    formula = score ~ rank + ethnicity + gender + language +                          age + cls_perc_eval + cls_did_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, 
+    data = evals)
 glance(full_model)$r.squared
 glance(full_model)$adj.r.squared
 ```

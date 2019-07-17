@@ -1,3 +1,5 @@
+library(tidyverse)
+
 pp <- read_csv("../../data/paris-paintings.csv", 
                na = c("n/a", "", "NA"))
 
@@ -19,7 +21,7 @@ str(pp)
 
 new_pp = cbind(dplyr::select_if(pp, is.numeric),
                dplyr::select_if(pp, is.factor))  %>%
-    select(-c( Interm, Diam_in, Surface_Rnd, logprice, position))
+    select(-c( count, Surface, quantity, lands_ment, Interm, Diam_in, Surface_Rnd, logprice, position))
 new_pp = new_pp[complete.cases(new_pp),]
 
 pp_lm = lm(formula = price ~(.^2), 
@@ -39,6 +41,14 @@ simple_stepwise_lms = step(simple_lm,
                          direction = "both",
                          trace = 10^6)
 
+summary(simple_lm)
 
-?step
-step
+summary(simple_stepwise_lms)
+
+step_results = readRDS("lm_stepwise_results.RDS")
+
+summary(step_results)
+
+results = readRDS("lm_results.RDS")
+
+summary(results)
