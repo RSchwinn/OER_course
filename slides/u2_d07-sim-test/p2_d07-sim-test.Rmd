@@ -47,13 +47,6 @@ dev.off <- function(){
 ggplot2::theme_set(ggplot2::theme_bw())
 ```
 
-
-## Announcements
-
-- Tue OH moved to Tue 4-5:30pm
-- Peer evals due Wed at 7pm -- must fill it out to receive your score
--
-
 ---
 
 class: center, middle
