@@ -92,7 +92,7 @@ In addition to `tidyverse` we will be using three other packages today
 
 ```{r}
 library(tidytext)
-library(geniusR) # https://github.com/JosiahParry/geniusR
+library(genius) # https://github.com/JosiahParry/geniusR
 library(gutenbergr)
 ```
 
@@ -318,7 +318,7 @@ marc_lyrics %>%
 
 .pull-left[
 ```{r}
-get_sentiments("afinn")
+# get_sentiments("afinn")
 ```
 ]
 .pull-right[
@@ -333,7 +333,7 @@ get_sentiments("bing")
 
 .pull-left[
 ```{r}
-get_sentiments("nrc")
+# get_sentiments("nrc")
 ```
 ]
 .pull-right[
