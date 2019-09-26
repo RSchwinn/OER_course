@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
     <title>Simulation based inference review</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="author" content="Dr. Çetinkaya-Rundel" />
-    <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
     <link rel="stylesheet" href="../slides.css" type="text/css" />
   </head>
   <body>
@@ -218,21 +219,23 @@ Interpret the coefficient of holiday.
 
 
 ```
-##                             term  estimate
-## 1                    (Intercept)  2715.141
-## 2                   seasonsummer  -276.949
-## 3                     seasonfall   409.792
-## 4                   seasonwinter -1130.561
-## 5                             yr  2014.066
-## 6                        holiday -1384.379
-## 7                     workingday   119.679
-## 8                 weathersitmist  -420.244
-## 9  weathersitlight precipitation -1907.149
-## 10                      temp_raw   102.997
-## 11                     atemp_raw    18.762
-## 12                       hum_raw   -13.591
-## 13                 windspeed_raw   -40.639
-## 14             holiday:atemp_raw    34.440
+## # A tibble: 14 x 2
+##    term                          estimate
+##    &lt;chr&gt;                            &lt;dbl&gt;
+##  1 (Intercept)                     2715. 
+##  2 seasonsummer                    -277. 
+##  3 seasonfall                       410. 
+##  4 seasonwinter                   -1131. 
+##  5 yr                              2014. 
+##  6 holiday                        -1384. 
+##  7 workingday                       120. 
+##  8 weathersitmist                  -420. 
+##  9 weathersitlight precipitation  -1907. 
+## 10 temp_raw                         103. 
+## 11 atemp_raw                         18.8
+## 12 hum_raw                          -13.6
+## 13 windspeed_raw                    -40.6
+## 14 holiday:atemp_raw                 34.4
 ```
 
 --
@@ -249,21 +252,23 @@ Discuss what makes for a good day to bike in DC.
 
 
 ```
-##                             term  estimate
-## 1                    (Intercept)  2715.141
-## 2                   seasonsummer  -276.949
-## 3                     seasonfall   409.792
-## 4                   seasonwinter -1130.561
-## 5                             yr  2014.066
-## 6                        holiday -1384.379
-## 7                     workingday   119.679
-## 8                 weathersitmist  -420.244
-## 9  weathersitlight precipitation -1907.149
-## 10                      temp_raw   102.997
-## 11                     atemp_raw    18.762
-## 12                       hum_raw   -13.591
-## 13                 windspeed_raw   -40.639
-## 14             holiday:atemp_raw    34.440
+## # A tibble: 14 x 2
+##    term                          estimate
+##    &lt;chr&gt;                            &lt;dbl&gt;
+##  1 (Intercept)                     2715. 
+##  2 seasonsummer                    -277. 
+##  3 seasonfall                       410. 
+##  4 seasonwinter                   -1131. 
+##  5 yr                              2014. 
+##  6 holiday                        -1384. 
+##  7 workingday                       120. 
+##  8 weathersitmist                  -420. 
+##  9 weathersitlight precipitation  -1907. 
+## 10 temp_raw                         103. 
+## 11 atemp_raw                         18.8
+## 12 hum_raw                          -13.6
+## 13 windspeed_raw                    -40.6
+## 14 holiday:atemp_raw                 34.4
 ```
 
 --
@@ -304,19 +309,19 @@ glimpse(ncbirths)
 ```
 ## Observations: 1,000
 ## Variables: 13
-## $ fage           &lt;int&gt; NA, NA, 19, 21, NA, NA, 18, 17, NA, 20, 30, NA,...
-## $ mage           &lt;int&gt; 13, 14, 15, 15, 15, 15, 15, 15, 16, 16, 16, 16,...
-## $ mature         &lt;fct&gt; younger mom, younger mom, younger mom, younger ...
-## $ weeks          &lt;int&gt; 39, 42, 37, 41, 39, 38, 37, 35, 38, 37, 45, 42,...
-## $ premie         &lt;fct&gt; full term, full term, full term, full term, ful...
-## $ visits         &lt;int&gt; 10, 15, 11, 6, 9, 19, 12, 5, 9, 13, 9, 8, 4, 12...
-## $ marital        &lt;fct&gt; married, married, married, married, married, ma...
-## $ gained         &lt;int&gt; 38, 20, 38, 34, 27, 22, 76, 15, NA, 52, 28, 34,...
-## $ weight         &lt;dbl&gt; 7.63, 7.88, 6.63, 8.00, 6.38, 5.38, 8.44, 4.69,...
-## $ lowbirthweight &lt;fct&gt; not low, not low, not low, not low, not low, lo...
-## $ gender         &lt;fct&gt; male, male, female, male, female, male, male, m...
-## $ habit          &lt;fct&gt; nonsmoker, nonsmoker, nonsmoker, nonsmoker, non...
-## $ whitemom       &lt;fct&gt; not white, not white, white, white, not white, ...
+## $ fage           &lt;int&gt; NA, NA, 19, 21, NA, NA, 18, 17, NA, 20, 30, NA, N…
+## $ mage           &lt;int&gt; 13, 14, 15, 15, 15, 15, 15, 15, 16, 16, 16, 16, 1…
+## $ mature         &lt;fct&gt; younger mom, younger mom, younger mom, younger mo…
+## $ weeks          &lt;int&gt; 39, 42, 37, 41, 39, 38, 37, 35, 38, 37, 45, 42, 4…
+## $ premie         &lt;fct&gt; full term, full term, full term, full term, full …
+## $ visits         &lt;int&gt; 10, 15, 11, 6, 9, 19, 12, 5, 9, 13, 9, 8, 4, 12, …
+## $ marital        &lt;fct&gt; married, married, married, married, married, marr…
+## $ gained         &lt;int&gt; 38, 20, 38, 34, 27, 22, 76, 15, NA, 52, 28, 34, 1…
+## $ weight         &lt;dbl&gt; 7.63, 7.88, 6.63, 8.00, 6.38, 5.38, 8.44, 4.69, 8…
+## $ lowbirthweight &lt;fct&gt; not low, not low, not low, not low, not low, low,…
+## $ gender         &lt;fct&gt; male, male, female, male, female, male, male, mal…
+## $ habit          &lt;fct&gt; nonsmoker, nonsmoker, nonsmoker, nonsmoker, nonsm…
+## $ whitemom       &lt;fct&gt; not white, not white, white, white, not white, no…
 ```
 
 ---
@@ -429,11 +434,10 @@ boot_means %&gt;%
 ```
 
 ```
-## Response: weeks (integer)
 ## # A tibble: 1 x 2
 ##   lower upper
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  38.1  38.5
+## 1  38.2  38.5
 ```
 
 --
@@ -554,6 +558,7 @@ df %&gt;%
     - `null = "point"`, and then specify the null value
     - `null = "independence"`
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
@@ -563,26 +568,79 @@ df %&gt;%
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
   }
-});
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);

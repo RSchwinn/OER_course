@@ -14,6 +14,7 @@ output:
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(broom)
+library(DT)
 ```
 
 ```{r setup, include=FALSE}

@@ -149,7 +149,7 @@ class: center, middle
 
 ## Let's get more data
 
-We'll use the `geniusR` package to get song lyric data from [Genius](https://genius.com/).
+We'll use the `geniusR` package to get song lyridata from [Genius](https://genius.com/).c 
 
 - `genius_album()` allows you to download the lyrics for an entire album in a 
 tidy format. 

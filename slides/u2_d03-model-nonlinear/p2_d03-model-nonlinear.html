@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
     <title>Modelling nonlinear relationships</title>
-    <meta charset="utf-8">
-    <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
     <link rel="stylesheet" href="../slides.css" type="text/css" />
   </head>
   <body>
@@ -134,9 +135,11 @@ tidy(m_ht_wt)
 ```
 
 ```
-##          term  estimate   std.error statistic      p.value
-## 1 (Intercept) 3.6214055 0.253860346  14.26535 8.822046e-45
-## 2    Width_in 0.7807964 0.009504522  82.14999 0.000000e+00
+## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    3.62    0.254        14.3 8.82e-45
+## 2 Width_in       0.781   0.00950      82.1 0.
 ```
 
 
@@ -147,9 +150,11 @@ tidy(m_ht_wt) %&gt;%
 ```
 
 ```
-##          term estimate
-## 1 (Intercept)    3.621
-## 2    Width_in    0.781
+## # A tibble: 2 x 2
+##   term        estimate
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 (Intercept)    3.62 
+## 2 Width_in       0.781
 ```
 
 ---
@@ -169,18 +174,15 @@ augment(m_ht_wt) %&gt;%
 ```
 
 ```
-##   .rownames Height_in Width_in  .fitted   .se.fit    .resid         .hat
-## 1         1        37     29.5 26.65490 0.1659086 10.345100 0.0003991488
-## 2         2        18     14.0 14.55256 0.1652910  3.447445 0.0003961825
-## 3         3        13     16.0 16.11415 0.1578240 -3.114148 0.0003611963
-## 4         4        14     18.0 17.67574 0.1523760 -3.675741 0.0003366899
-## 5         5        14     18.0 17.67574 0.1523760 -3.675741 0.0003366899
-##     .sigma      .cooksd .std.resid
-## 1 8.303538 3.099689e-04  1.2460054
-## 2 8.305367 3.416655e-05  0.4152235
-## 3 8.305409 2.541574e-05 -0.3750734
-## 4 8.305336 3.300498e-05 -0.4427072
-## 5 8.305336 3.300498e-05 -0.4427072
+## # A tibble: 5 x 10
+##   .rownames Height_in Width_in .fitted .se.fit .resid    .hat .sigma
+##   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1                37     29.5    26.7   0.166  10.3  3.99e-4   8.30
+## 2 2                18     14      14.6   0.165   3.45 3.96e-4   8.31
+## 3 3                13     16      16.1   0.158  -3.11 3.61e-4   8.31
+## 4 4                14     18      17.7   0.152  -3.68 3.37e-4   8.31
+## 5 5                14     18      17.7   0.152  -3.68 3.37e-4   8.31
+## # … with 2 more variables: .cooksd &lt;dbl&gt;, .std.resid &lt;dbl&gt;
 ```
 ]
 
@@ -223,10 +225,11 @@ glance(m_ht_wt)
 ```
 
 ```
-##   r.squared adj.r.squared   sigma statistic p.value df    logLik      AIC
-## 1 0.6829468     0.6828456 8.30427  6748.621       0  2 -11083.45 22172.89
-##        BIC deviance df.residual
-## 1 22191.04 216054.5        3133
+## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic p.value    df  logLik    AIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+## 1     0.683         0.683  8.30     6749.       0     2 -11083. 22173.
+## # … with 3 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;, df.residual &lt;int&gt;
 ```
 
 --
@@ -388,9 +391,11 @@ m_lprice_wt %&gt;%
 ```
 
 ```
-##          term estimate
-## 1 (Intercept)    4.669
-## 2    Width_in    0.019
+## # A tibble: 2 x 2
+##   term        estimate
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 (Intercept)    4.67 
+## 2 Width_in       0.019
 ```
 
 ---
@@ -464,9 +469,11 @@ m_lprice_wt %&gt;%
 ```
 
 ```
-##          term estimate
-## 1 (Intercept)    4.669
-## 2    Width_in    0.019
+## # A tibble: 2 x 2
+##   term        estimate
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 (Intercept)    4.67 
+## 2 Width_in       0.019
 ```
 
 
@@ -478,9 +485,11 @@ m_lprice_wt %&gt;%
 ```
 
 ```
-##          term estimate
-## 1 (Intercept)  106.540
-## 2    Width_in    1.019
+## # A tibble: 2 x 2
+##   term        estimate
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 (Intercept)   107.  
+## 2 Width_in        1.02
 ```
 
 ---
@@ -613,10 +622,12 @@ m_main %&gt;%
 ```
 
 ```
-##                    term estimate
-## 1           (Intercept)  4.88008
-## 2               Surface  0.00027
-## 3 factor(artistliving)1  0.13721
+## # A tibble: 3 x 2
+##   term                  estimate
+##   &lt;chr&gt;                    &lt;dbl&gt;
+## 1 (Intercept)            4.88   
+## 2 Surface                0.00027
+## 3 factor(artistliving)1  0.137
 ```
 
 --
@@ -657,6 +668,7 @@ not vary between paintings by living and non-living artists (same slope),
 - Paintings by living artists are consistently more expensive than paintings by
 non-living artists (different intercept).
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
@@ -666,26 +678,79 @@ non-living artists (different intercept).
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
   }
-});
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
